@@ -1,8 +1,10 @@
 import gsap from "gsap";
 import { useRef } from "react";
+import { FaLightbulb } from "react-icons/fa";
 
 import Button from "./Button";
 import AnimatedTitle from "./AnimatedTitle";
+import BrandVisual from "./visuals/BrandVisual.jsx";
 
 const FloatingImage = () => {
     const frameRef = useRef(null);
@@ -61,29 +63,21 @@ const FloatingImage = () => {
                     <div className="story-img-container">
                         <div className="story-img-mask">
                             <div className="story-img-content">
-                                {/* 
-                                <img
-                                    ref={frameRef}
-                                    onMouseMove={handleMouseMove}
-                                    onMouseLeave={handleMouseLeave}
-                                    onMouseUp={handleMouseLeave}
-                                    onMouseEnter={handleMouseLeave}
-                                    src="/img/entrance.webp"
-                                    alt="entrance.webp"
-                                    className="object-contain"
-                                />
-                                */}
                                 <div
                                     ref={frameRef}
                                     onMouseMove={handleMouseMove}
                                     onMouseLeave={handleMouseLeave}
                                     onMouseUp={handleMouseLeave}
                                     onMouseEnter={handleMouseLeave}
-                                    className="w-[90%] h-[400px] md:h-[600px] bg-gradient-to-br from-[#5542ff] via-[#050014] to-black border border-white/10 rounded-2xl shadow-3xl flex flex-col items-center justify-center p-8 text-center"
+                                    className="w-[90%] h-[400px] md:h-[600px] rounded-2xl shadow-3xl relative overflow-hidden"
                                 >
-                                    <div className="absolute inset-0 bg-black/20 rounded-2xl" />
-                                    <span className="relative z-10 font-zentry text-4xl md:text-7xl text-[#dfdff0] font-black uppercase tracking-widest opacity-80">AMORA</span>
-                                    <span className="relative z-10 font-sans text-xs md:text-sm text-[#edff66] uppercase tracking-widest mt-2 opacity-60">Digital Innovation</span>
+                                    <BrandVisual
+                                        variant={1}
+                                        icon={<FaLightbulb />}
+                                        iconClassName="text-5xl md:text-7xl"
+                                        label="Digital Innovation"
+                                        className="size-full"
+                                    />
                                 </div>
                             </div>
                         </div>

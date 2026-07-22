@@ -9,14 +9,8 @@ const Footer = () => {
                     {/* Column 1: Brand Info */}
                     <div className="flex flex-col gap-4">
                         <div className="flex items-center gap-2">
-                            {/* 
-                            <img src="/img/logo.png" alt="Amora Prime logo" className="w-8" />
-                            */}
-                            <svg className="w-7 h-7 text-black" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2L2 22H22L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                <path d="M12 6L6 18H18L12 6Z" fill="currentColor" opacity="0.3"/>
-                            </svg>
-                            <span className="font-zentry text-lg font-bold uppercase tracking-wider">
+                            <img src="/img/logo.jpg" alt="Amora Prime logo" className="w-8 h-8 object-contain rounded-full" />
+                            <span className="font-sans text-lg font-bold uppercase tracking-wider">
                                 Amora Prime
                             </span>
                         </div>
@@ -68,6 +62,7 @@ const Footer = () => {
                         <ul className="space-y-2.5 text-sm text-black/75">
                             <li><a href="#about" className="hover:underline hover:text-white transition-colors">About Us</a></li>
                             <li><a href="#services" className="hover:underline hover:text-white transition-colors">Services</a></li>
+                            <li><a href="#showcase" className="hover:underline hover:text-white transition-colors">Developer Showcase</a></li>
                             <li><a href="#chatbot" className="hover:underline hover:text-white transition-colors">Interactive Chatbot</a></li>
                             <li><a href="#contact" className="hover:underline hover:text-white transition-colors">Get in Touch</a></li>
                         </ul>

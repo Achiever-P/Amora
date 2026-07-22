@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily:{
-        zentry: ['zentry', 'sanf-serif'],
+        zentry: ['"Lato"', 'sans-serif'],
+        playfair: ['"Playfair Display"', 'serif'],
         general: ['general', 'sanf-serif'],
         'circular-web': ['circular-web', 'sanf-serif'],
         'robert-medium':  ['robert-medium', 'sanf-serif'],

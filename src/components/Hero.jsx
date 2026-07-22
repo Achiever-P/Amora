@@ -4,6 +4,7 @@ import { TiLocationArrow } from 'react-icons/ti';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import AnimatedBackdrop from './visuals/AnimatedBackdrop.jsx';
 
 // Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -63,16 +64,6 @@ const Hero = () => {
         });
     });
 
-    const getGradientClass = (index) => {
-        const gradients = {
-            1: "bg-gradient-to-br from-[#12002f] via-[#050014] to-black",
-            2: "bg-gradient-to-br from-[#001829] via-[#000814] to-black",
-            3: "bg-gradient-to-br from-[#2a080c] via-[#0f0003] to-black",
-            4: "bg-gradient-to-br from-[#0a2f1d] via-[#020d06] to-black",
-        };
-        return gradients[index] || gradients[1];
-    };
-
     return (
         <div className="relative h-dvh w-screen overflow-x-hidden">
 
@@ -98,21 +89,29 @@ const Hero = () => {
                         >
                             <div
                                 id="current-video"
-                                className={`size-64 origin-center scale-150 object-cover object-center ${getGradientClass(upcomingIndex)}`}
-                            />
+                                className="relative size-64 origin-center scale-150 overflow-hidden rounded-lg"
+                            >
+                                <AnimatedBackdrop variant={upcomingIndex} dense particleCount={8} />
+                            </div>
                         </div>
                     </div>
 
                     {/* Main Video */}
                     <div
                         id="next-video"
-                        className={`absolute-center invisible absolute z-20 size-64 ${getGradientClass(currentIndex)}`}
-                    />
+                        className="absolute-center invisible absolute z-20 size-64 overflow-hidden rounded-lg"
+                    >
+                        <AnimatedBackdrop variant={currentIndex} dense particleCount={8} />
+                    </div>
 
-                    {/* Background Video */}
-                    <div
-                        className={`absolute left-0 top-0 size-full ${getGradientClass(currentIndex === totalGradients - 1 ? 1 : currentIndex)}`}
-                    />
+                    {/* Background */}
+                    <div className="absolute left-0 top-0 size-full overflow-hidden">
+                        <AnimatedBackdrop
+                            variant={currentIndex === totalGradients - 1 ? 1 : currentIndex}
+                            dense
+                            particleCount={18}
+                        />
+                    </div>
                 </div>
 
                 {/* Heading and Subtext */}
@@ -143,7 +142,7 @@ const Hero = () => {
             </div>
 
             <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
-                GR<b>O</b>WTH
+                Gr<b>o</b>wth
             </h1>
 
         </div>

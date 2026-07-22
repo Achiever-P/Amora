@@ -1,4 +1,5 @@
 @import url("https://fonts.cdnfonts.com/css/general-sans");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lato:wght@300;400;700;900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -64,24 +65,26 @@ body {
     }
 
     .special-font b {
-        font-family: "Zentry";
-        font-feature-settings: "ss01" on;
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-weight: 600;
+        text-transform: none;
     }
 
     .hero-heading {
-        @apply uppercase font-zentry font-black text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem];
+        @apply font-zentry font-black tracking-tighter text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem];
     }
 
     .about-subtext {
-        @apply absolute bottom-[-80dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center font-circular-web text-lg md:max-w-[34rem];
+        @apply absolute bottom-8 left-1/2 w-full max-w-96 -translate-x-1/2 text-center font-circular-web text-lg md:max-w-[34rem];
     }
 
     .about-image {
-        @apply absolute left-1/2 top-0 z-20 h-[60vh] w-96 origin-center -translate-x-1/2 overflow-hidden rounded-3xl md:w-[30vw];
+        @apply absolute left-1/2 top-0 z-20 h-[50vh] w-96 origin-center -translate-x-1/2 overflow-hidden rounded-3xl md:w-[30vw];
     }
 
     .animated-title {
-        @apply flex flex-col gap-1 text-7xl uppercase leading-[.8] text-white sm:px-32 md:text-[6rem];
+        @apply flex flex-col gap-1 text-7xl tracking-tighter leading-[.8] text-white sm:px-32 md:text-[6rem];
     }
 
     .animated-word {
@@ -100,7 +103,7 @@ body {
     }
 
     .bento-title {
-        @apply uppercase md:text-6xl text-4xl font-black font-zentry;
+        @apply md:text-6xl text-4xl font-black font-zentry tracking-tight;
     }
 
     .story-img-container {
@@ -270,4 +273,28 @@ body {
         transform: translateY(66%) scale(0.65);
         opacity: 0.8;
     }
+}
+
+/* Custom-generated tech/AI themed backdrop animations (used in place of stock media) */
+@keyframes blob-float-a {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(6%, -8%) scale(1.08); }
+    66% { transform: translate(-5%, 6%) scale(0.95); }
+}
+
+@keyframes blob-float-b {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-8%, 5%) scale(1.1); }
+}
+
+@keyframes grid-pulse {
+    0%, 100% { opacity: 0.12; }
+    50% { opacity: 0.26; }
+}
+
+@keyframes particle-drift {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    10% { opacity: 0.85; }
+    90% { opacity: 0.85; }
+    100% { transform: translateY(-46px) translateX(10px); opacity: 0; }
 }

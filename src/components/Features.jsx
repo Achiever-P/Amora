@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
 import { TiLocationArrow } from "react-icons/ti";
+import { FaCode, FaRobot, FaMobileAlt, FaShoppingCart, FaBrain, FaPalette } from "react-icons/fa";
+import AnimatedBackdrop from "./visuals/AnimatedBackdrop.jsx";
 
 export const BentoTilt = ({ children, className = "" }) => {
     const [transformStyle, setTransformStyle] = useState("");
@@ -38,7 +40,7 @@ export const BentoTilt = ({ children, className = "" }) => {
     );
 };
 
-export const BentoCard = ({ src, title, description, showButton, btnText, gradientClass }) => {
+export const BentoCard = ({ variant, icon, title, description, showButton, btnText, gradientClass, onButtonClick }) => {
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
     const [hoverOpacity, setHoverOpacity] = useState(0);
     const hoverButtonRef = useRef(null);
@@ -58,15 +60,12 @@ export const BentoCard = ({ src, title, description, showButton, btnText, gradie
 
     return (
         <div className={`relative size-full ${gradientClass || "bg-neutral-900"}`}>
-            {/* 
-            <video
-                src={src}
-                loop
-                muted
-                autoPlay
-                className="absolute left-0 top-0 size-full object-cover object-center"
-            />
-            */}
+            <AnimatedBackdrop variant={variant} />
+            {icon && (
+                <span className="pointer-events-none absolute right-5 top-5 z-10 text-6xl md:text-7xl text-white/10">
+                    {icon}
+                </span>
+            )}
             <div className="relative z-10 flex size-full flex-col justify-between p-5 text-blue-50">
                 <div>
                     <h1 className="bento-title special-font">{title}</h1>
@@ -76,11 +75,13 @@ export const BentoCard = ({ src, title, description, showButton, btnText, gradie
                 </div>
 
                 {showButton && (
-                    <div
+                    <button
+                        type="button"
                         ref={hoverButtonRef}
                         onMouseMove={handleMouseMove}
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
+                        onClick={onButtonClick}
                         className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white/60 font-sans font-semibold tracking-wider hover:text-white"
                     >
                         {/* Radial gradient hover effect */}
@@ -93,11 +94,19 @@ export const BentoCard = ({ src, title, description, showButton, btnText, gradie
                         />
                         <TiLocationArrow className="relative z-20" />
                         <p className="relative z-20">{btnText || "Learn More"}</p>
-                    </div>
+                    </button>
                 )}
             </div>
         </div>
     );
+};
+
+const goToSection = (hash) => {
+    if (window.location.hash === hash) {
+        document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+        window.location.hash = hash;
+    }
 };
 
 const Features = () => (
@@ -114,7 +123,8 @@ const Features = () => (
 
             <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
                 <BentoCard
-                    src="videos/feature-1.mp4"
+                    variant={1}
+                    icon={<FaCode />}
                     title={
                         <>
                             W<b>e</b>b Dev
@@ -124,13 +134,15 @@ const Features = () => (
                     showButton
                     btnText="Explore"
                     gradientClass="bg-gradient-to-br from-[#1b003a] via-[#12002f] to-black"
+                    onButtonClick={() => goToSection("#contact")}
                 />
             </BentoTilt>
 
             <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
                 <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
                     <BentoCard
-                        src="videos/feature-2.mp4"
+                        variant={2}
+                        icon={<FaRobot />}
                         title={
                             <>
                                 AI Ch<b>a</b>tbot
@@ -140,12 +152,14 @@ const Features = () => (
                         showButton
                         btnText="Try Demo"
                         gradientClass="bg-gradient-to-br from-[#001f3f] via-[#001122] to-black"
+                        onButtonClick={() => goToSection("#chatbot")}
                     />
                 </BentoTilt>
 
                 <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
                     <BentoCard
-                        src="videos/feature-3.mp4"
+                        variant={3}
+                        icon={<FaMobileAlt />}
                         title={
                             <>
                                 M<b>o</b>bile Apps
@@ -155,12 +169,14 @@ const Features = () => (
                         showButton
                         btnText="Explore"
                         gradientClass="bg-gradient-to-br from-[#3b0d11] via-[#1a0507] to-black"
+                        onButtonClick={() => goToSection("#contact")}
                     />
                 </BentoTilt>
 
                 <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
                     <BentoCard
-                        src="videos/feature-4.mp4"
+                        variant={4}
+                        icon={<FaShoppingCart />}
                         title={
                             <>
                                 E-C<b>o</b>mmerce
@@ -170,11 +186,17 @@ const Features = () => (
                         showButton
                         btnText="Explore"
                         gradientClass="bg-gradient-to-br from-[#023e8a] via-[#001d3d] to-black"
+                        onButtonClick={() => goToSection("#contact")}
                     />
                 </BentoTilt>
 
                 <BentoTilt className="bento-tilt_2">
-                    <div className="flex size-full flex-col justify-between bg-[#dfdff0] p-5 text-black">
+                    <button
+                        type="button"
+                        onClick={() => goToSection("#contact")}
+                        className="relative flex size-full flex-col justify-between bg-[#dfdff0] p-5 text-black text-left cursor-pointer overflow-hidden"
+                    >
+                        <FaPalette className="pointer-events-none absolute right-5 top-5 text-6xl md:text-7xl text-black/10" />
                         <div>
                             <h1 className="bento-title special-font">UI/<b>U</b>X Des<b>i</b>gn</h1>
                             <p className="mt-3 max-w-64 font-sans text-xs md:text-base text-gray-700">
@@ -183,12 +205,13 @@ const Features = () => (
                         </div>
 
                         <TiLocationArrow className="m-5 scale-[4] self-end text-black" />
-                    </div>
+                    </button>
                 </BentoTilt>
 
                 <BentoTilt className="bento-tilt_2">
                     <BentoCard
-                        src="videos/feature-5.mp4"
+                        variant={2}
+                        icon={<FaBrain />}
                         title={
                             <>
                                 Cust<b>o</b>m AI
@@ -198,6 +221,7 @@ const Features = () => (
                         showButton
                         btnText="Explore"
                         gradientClass="bg-gradient-to-br from-[#1b4332] via-[#081c15] to-black"
+                        onButtonClick={() => goToSection("#contact")}
                     />
                 </BentoTilt>
             </div>

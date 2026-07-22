@@ -6,9 +6,9 @@ import { TiLocationArrow } from "react-icons/ti";
 
 import Button from "./Button";
 
-const navItems = ["Services", "Chatbot", "About", "Contact"];
+const navItems = ["Services", "Chatbot", "About", "Showcase", "Contact"];
 
-const NavBar = () => {
+const NavBar = ({ currentView }) => {
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
     const [isIndicatorActive, setIsIndicatorActive] = useState(false);
 
@@ -66,18 +66,12 @@ const NavBar = () => {
                 <nav className="flex size-full items-center justify-between p-4">
 
                     <div className="flex items-center gap-7">
-                        <div className="flex items-center gap-2">
-                            {/* 
-                            <img src="/img/logo.png" alt="logo" className="w-10" />
-                            */}
-                            <svg className="w-8 h-8 text-[#edff66]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2L2 22H22L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                <path d="M12 6L6 18H18L12 6Z" fill="currentColor" opacity="0.3"/>
-                            </svg>
-                            <span className="font-zentry text-xl font-bold uppercase tracking-wider text-white">Amora Prime</span>
-                        </div>
+                        <a href={currentView !== 'home' ? "/#" : "#"} className="flex items-center gap-2 select-none cursor-pointer">
+                            <img src="/img/logo.jpg" alt="Amora Prime logo" className="w-8 h-8 object-contain rounded-full" />
+                            <span className="font-sans text-xl font-bold uppercase tracking-wider text-white">Amora Prime</span>
+                        </a>
 
-                        <a href="#contact">
+                        <a href={currentView !== 'home' ? "/#contact" : "#contact"}>
                             <Button
                                 id="contact-button"
                                 title="Get in Touch"
@@ -90,15 +84,24 @@ const NavBar = () => {
 
                     <div className="flex h-full items-center">
                         <div className="hidden md:block">
-                            {navItems.map((item, index) => (
-                                <a
-                                    key={index}
-                                    href={`#${item.toLowerCase()}`}
-                                    className="nav-hover-btn"
-                                >
-                                    {item}
-                                </a>
-                            ))}
+                            {navItems.map((item, index) => {
+                                const isShowcase = item === "Showcase";
+                                const href = isShowcase 
+                                    ? "#showcase" 
+                                    : (currentView !== 'home' ? `/#${item.toLowerCase()}` : `#${item.toLowerCase()}`);
+                                
+                                return (
+                                    <a
+                                        key={index}
+                                        href={href}
+                                        className={clsx("nav-hover-btn", {
+                                            "!text-[#edff66] font-bold": isShowcase && currentView === 'showcase'
+                                        })}
+                                    >
+                                        {item}
+                                    </a>
+                                );
+                            })}
                         </div>
 
                         <button

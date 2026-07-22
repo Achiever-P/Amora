@@ -1,9 +1,11 @@
 import AnimatedTitle from "./AnimatedTitle";
 import Button from "./Button";
+import BrandVisual from "./visuals/BrandVisual.jsx";
+import { FaRocket, FaChartLine, FaCode, FaRobot } from "react-icons/fa";
 
-const ImageClipBox = ({ src, clipClass, bgClass }) => (
-    <div className={`${clipClass} ${bgClass || "bg-neutral-800"} flex items-center justify-center`}>
-        {/* <img src={src} /> */}
+const ImageClipBox = ({ variant, icon, clipClass, bgClass }) => (
+    <div className={`${clipClass} ${bgClass || "bg-neutral-800"} flex items-center justify-center overflow-hidden`}>
+        <BrandVisual variant={variant} icon={icon} className="size-full" iconClassName="text-4xl md:text-5xl" />
     </div>
 );
 
@@ -13,12 +15,14 @@ const Contact = () => {
             <div className="relative rounded-lg bg-black py-24 text-blue-50 sm:overflow-hidden">
                 <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-20 lg:w-96">
                     <ImageClipBox
-                        src="/img/contact-1.webp"
+                        variant={1}
+                        icon={<FaRocket />}
                         clipClass="contact-clip-path-1"
                         bgClass="bg-gradient-to-br from-[#5542ff] to-[#050014] w-full h-full min-h-[300px]"
                     />
                     <ImageClipBox
-                        src="/img/contact-2.webp"
+                        variant={4}
+                        icon={<FaChartLine />}
                         clipClass="contact-clip-path-2 lg:translate-y-40 translate-y-60"
                         bgClass="bg-gradient-to-br from-[#edff66] to-[#050014] w-full h-full min-h-[300px]"
                     />
@@ -26,12 +30,14 @@ const Contact = () => {
 
                 <div className="absolute -top-40 left-20 w-60 sm:top-1/2 md:left-auto md:right-10 lg:top-20 lg:w-80">
                     <ImageClipBox
-                        src="/img/swordman-partial.webp"
+                        variant={1}
+                        icon={<FaCode />}
                         clipClass="absolute md:scale-125"
                         bgClass="bg-gradient-to-br from-[#12002f] to-[#5542ff] w-48 h-48"
                     />
                     <ImageClipBox
-                        src="/img/swordman.webp"
+                        variant={2}
+                        icon={<FaRobot />}
                         clipClass="sword-man-clip-path md:scale-125"
                         bgClass="bg-gradient-to-br from-[#edff66] to-[#5542ff] w-48 h-48"
                     />

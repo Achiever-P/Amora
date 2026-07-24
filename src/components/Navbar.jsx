@@ -70,7 +70,7 @@ const NavBar = ({ currentView }) => {
 
                         <div className="flex items-center gap-7">
                             <a href={currentView !== 'home' ? "/#" : "#"} className="flex items-center gap-2 select-none cursor-pointer">
-                                <img src="/img/logo.jpg" alt="Amora Prime logo" className="w-8 h-8 object-contain rounded-full" />
+                                <img src={`${import.meta.env.BASE_URL}img/logo.jpg`} alt="Amora Prime logo" className="w-8 h-8 object-contain rounded-full" />
                                 <span className="font-sans text-sm sm:text-xl font-bold uppercase tracking-wider text-white">Amora Prime</span>
                             </a>
 
@@ -123,7 +123,7 @@ const NavBar = ({ currentView }) => {
                                 <audio
                                     ref={audioElementRef}
                                     className="hidden"
-                                    src="/audio/loop.mp3"
+                                    src={`${import.meta.env.BASE_URL}audio/loop.mp3`}
                                     loop
                                 />
                                 {[1, 2, 3, 4].map((bar) => (
@@ -148,7 +148,7 @@ const NavBar = ({ currentView }) => {
                 <div className="fixed inset-0 z-[9999] flex flex-col bg-black p-6 text-white md:hidden">
                     <div className="flex items-center justify-between pb-6 border-b border-white/10">
                         <div className="flex items-center gap-2 select-none">
-                            <img src="/img/logo.jpg" alt="Amora Prime logo" className="w-8 h-8 object-contain rounded-full" />
+                            <img src={`${import.meta.env.BASE_URL}img/logo.jpg`} alt="Amora Prime logo" className="w-8 h-8 object-contain rounded-full" />
                             <span className="font-sans text-sm font-bold uppercase tracking-wider text-white">Amora Prime</span>
                         </div>
                         <button 

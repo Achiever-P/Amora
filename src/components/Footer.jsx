@@ -9,7 +9,7 @@ const Footer = () => {
                     {/* Column 1: Brand Info */}
                     <div className="flex flex-col gap-4">
                         <div className="flex items-center gap-2">
-                            <img src="/img/logo.jpg" alt="Amora Prime logo" className="w-8 h-8 object-contain rounded-full" />
+                            <img src={`${import.meta.env.BASE_URL}img/logo.jpg`} alt="Amora Prime logo" className="w-8 h-8 object-contain rounded-full" />
                             <span className="font-sans text-lg font-bold uppercase tracking-wider">
                                 Amora Prime
                             </span>

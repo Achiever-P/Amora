@@ -111,7 +111,7 @@ const FloatingImage = () => {
                     </div>
                 </div>
 
-                <div className="-mt-80 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end">
+                <div className="mt-8 flex w-full justify-center px-4 md:px-0 md:-mt-64 md:me-44 md:justify-end">
                     <div className="flex h-full w-fit flex-col items-center md:items-start">
                         <p className="mt-3 max-w-sm text-center font-circular-web text-violet-50 md:text-start">
                             Amora Prime is dedicated to engineering premium software, high-performance web applications, and cutting-edge artificial intelligence systems for enterprises and local brands alike.

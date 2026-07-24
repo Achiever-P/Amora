@@ -2,7 +2,7 @@ import AnimatedTitle from "./AnimatedTitle";
 
 const About = () => {
     return (
-        <div id="about" className="min-h-[80vh] w-screen bg-[#dfdff0] flex flex-col items-center justify-center py-24">
+        <div id="about" className="min-h-[80vh] w-full bg-[#dfdff0] flex flex-col items-center justify-center py-24">
             <div className="relative flex flex-col items-center gap-5 text-center px-4">
                 <p className="font-general text-sm uppercase md:text-[10px] tracking-wider text-gray-500">
                     Welcome to Amora Prime
@@ -21,7 +21,7 @@ const About = () => {
                         Amora Prime is an MSME registered digital agency building fast websites, custom AI assistants, native mobile apps, and robust backend software.
                     </p>
                     
-                    <div className="flex gap-8 mt-8 text-center justify-center">
+                    <div className="flex gap-4 sm:gap-8 mt-8 text-center justify-center">
                         <div>
                             <h3 className="font-zentry text-3xl font-black text-black">100+</h3>
                             <p className="text-[10px] uppercase text-gray-500 font-general font-bold tracking-wider mt-1">Projects Completed</p>

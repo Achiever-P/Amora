@@ -2,7 +2,7 @@ import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <footer className="w-screen bg-[#5542ff] py-16 text-black font-sans">
+        <footer className="w-full bg-[#5542ff] py-16 text-black font-sans">
             <div className="container mx-auto px-6 md:px-12">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-10 border-b border-black/10 pb-12">
                     

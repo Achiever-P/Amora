@@ -68,7 +68,7 @@ const App = () => {
     };
 
     return (
-       <main className="relative min-h-screen w-screen overflow-x-hidden">
+       <main className="relative min-h-screen w-full overflow-x-hidden">
           <Navbar currentView={currentView} />
 
           {currentView === 'showcase' && <Showcase onBackHome={handleBackHome} />}

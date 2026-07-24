@@ -61,7 +61,7 @@ const LegalPage = ({ page, onBackHome }) => {
     }, [page]);
 
     return (
-        <div className="min-h-screen w-screen bg-[#07070a] text-blue-50 relative pb-24 overflow-x-hidden font-sans">
+        <div className="min-h-screen w-full bg-[#07070a] text-blue-50 relative pb-24 overflow-x-hidden font-sans">
             <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#5724ff]/10 rounded-full blur-[150px] pointer-events-none" />
 
             <div className="container mx-auto px-6 md:px-12 pt-32 relative z-10 max-w-3xl">

@@ -12,6 +12,7 @@ const ChatbotDemo = () => {
     const [inputValue, setInputValue] = useState("");
     const [isTyping, setIsTyping] = useState(false);
     const chatEndRef = useRef(null);
+    const isMounted = useRef(false);
 
     const quickReplies = [
         "Web Development",
@@ -23,6 +24,10 @@ const ChatbotDemo = () => {
 
     // Scroll to the bottom of the chat list whenever messages change
     useEffect(() => {
+        if (!isMounted.current) {
+            isMounted.current = true;
+            return;
+        }
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages, isTyping]);
 
@@ -72,8 +77,8 @@ const ChatbotDemo = () => {
     };
 
     return (
-        <section id="chatbot" className="my-20 w-screen px-10">
-            <div className="relative rounded-lg bg-black py-20 text-blue-50 sm:overflow-hidden px-5 md:px-16 flex flex-col lg:flex-row items-center gap-10">
+        <section id="chatbot" className="my-20 w-full px-4 sm:px-10">
+            <div className="relative rounded-lg bg-black py-20 text-blue-50 overflow-hidden px-5 md:px-16 flex flex-col lg:flex-row items-center gap-10">
                 
                 {/* Visual Copy Panel */}
                 <div className="flex flex-col lg:w-1/2">
